@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+
+# Conda environments
+.env/
+.venv/
+venv/
+env/
+conda-env/
+*.conda
+
+# Conda config
+.condarc
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# Data files
+/data/
+
+# Logs & outputs
+logs/
+*.log
+results/
+outputs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build / distribution
+build/
+dist/
+
+# Misc
+*.bak
+*.tmp
