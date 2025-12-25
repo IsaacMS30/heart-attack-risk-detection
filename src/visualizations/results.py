@@ -33,6 +33,16 @@ def plot_metrics(metrics: dict):
     plt.show()
 
 def plot_auc_curve(models: dict, X:pd.DataFrame, y: pd.Series):
+    """
+    Plot ROC curve for each model.
+    
+    :param models: Models to plot
+    :type models: dict
+    :param X: Feature matrix
+    :type X: pd.DataFrame
+    :param y: Labels Dataframe
+    :type y: pd.Series
+    """
     for name, model in models.items():
         y_preds = model.predict(X)
         fpr, tpr, thresh = roc_curve(y, y_preds)
