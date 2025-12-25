@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from typing import Tuple
 
 def split_train_test(X: pd.DataFrame, y: pd.Series, test_size: float = 0.2
@@ -68,3 +68,31 @@ def perform_cross_validation(models: dict, X: pd.DataFrame, y: pd.Series, scorin
         scorings[key] = current_score
     
     return scorings
+
+def apply_grid_search(model, X:pd.DataFrame, y: pd.Series, grid: dict, cv: int = 5, scoring: str = "accuracy"):
+    """
+    Tunes a model using the parameter grid provided, using GridSearch.
+    
+    :param model: Model to tune
+    :param X: Features matrix
+    :type X: pd.DataFrame
+    :param y: Labels series
+    :type y: pd.Series
+    :param grid: Params to try in Grid search
+    : type grid: dict
+    :param cv: Total of cross-validation divisions to apply
+    :type cv: int
+    :param scoring: Metric to evaluate
+    :type scoring: str
+    """
+
+    gs_model = GridSearchCV(model, grid, cv=cv, scoring=scoring)
+
+    gs_model.fit(X, y)
+
+    print(f"Best parameters: {gs_model.best_params_}")
+    print(f"Best accuracy: {gs_model.best_score_}")
+
+    return gs_model
+
+def train_models

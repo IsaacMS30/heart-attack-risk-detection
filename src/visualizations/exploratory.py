@@ -6,38 +6,38 @@ def plot_age_hist(age_no_risk, age_risk):
     plt.figure(figsize=(10, 6))
     plt.hist([age_no_risk, age_risk])
 
-    plt.title("Heart Attack Risk by Age")
+    plt.title("Heart Attack Disease by Age")
     plt.xlabel("Age")
     plt.ylabel("Total patients")
-    plt.legend(["No Risk", "Risk"])
+    plt.legend(["No Disease", "Disease"])
 
     plt.show()
     plt.close()
 
 
-def plot_risk_vs_history(df: pd.DataFrame):
-    ct = pd.crosstab(df["Heart Attack Risk"], df["Family History"])
+def plot_disease_vs_gender(df: pd.DataFrame):
+    ct = pd.crosstab(df["target"], df["gender"])
     ax = ct.plot(kind="bar")
 
-    ax.set_title("Heart Attack Rate by Family History")
-    ax.set_xlabel("Heart Attack Risk")
+    ax.set_title("Heart Attack Disease by Gender")
+    ax.set_xlabel("Heart Attack Disease")
     ax.set_ylabel("Total patients")
     ax.set_xticklabels(["No disease", "Disease"], rotation=0)
-    ax.legend(["No History", "History"])
+    ax.legend(["Female", "Male"])
 
     plt.show()
     plt.close()
 
 
-def plot_bmi_vs_chol(df: pd.DataFrame):
+def plot_hr_vs_chol(df: pd.DataFrame):
     plt.figure(figsize=(10,6))
-    plt.scatter(df.Cholesterol[df["Heart Attack Risk"] == 0], df.BMI[df["Heart Attack Risk"] == 0])
-    plt.scatter(df.Cholesterol[df["Heart Attack Risk"] == 1], df.BMI[df["Heart Attack Risk"] == 1])
+    plt.scatter(df.serumcholestrol[df["target"] == 0], df.maxheartrate[df["target"] == 0])
+    plt.scatter(df.serumcholestrol[df["target"] == 1], df.maxheartrate[df["target"] == 1])
 
-    plt.title("BMI vs Cholesterol")
+    plt.title("Max Heart Rate vs Cholesterol")
     plt.xlabel("Cholesterol level")
-    plt.ylabel("BMI")
-    plt.legend(["No risk", "Risk"])
+    plt.ylabel("Max Heart Rate")
+    plt.legend(["No disease", "Disease"])
 
     plt.show()
     plt.close()

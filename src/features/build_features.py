@@ -8,7 +8,7 @@ def split_features(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Series]:
     :param df: Dataframe to split
     :type df: pd.Dataframe
     """
-    X = df.drop("Heart Attack Risk", axis=1)
-    y = df["Heart Attack Risk"]
+    X = df.drop("target", axis=1)
+    y = df["target"]
 
     return X, y
