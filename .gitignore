@@ -26,6 +26,9 @@ ipython_config.py
 # Data files
 /data/
 
+# Models
+models/
+
 # Logs & outputs
 logs/
 *.log

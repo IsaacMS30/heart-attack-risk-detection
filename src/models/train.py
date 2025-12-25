@@ -1,6 +1,8 @@
 import os
 
 import pandas as pd
+import numpy as np
+import joblib
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from typing import Tuple
 
@@ -95,4 +97,24 @@ def apply_grid_search(model, X:pd.DataFrame, y: pd.Series, grid: dict, cv: int =
 
     return gs_model
 
-def train_models
+def train_models(models: dict, X:pd.DataFrame, y:pd.Series):
+    """
+    Trains the given models. After that, saves them to files
+    
+    :param models: Models to train
+    :type models: dict
+    :param X: Features matrix
+    :type X: pd.DataFrame
+    :param y: Labels series
+    :type y: pd.Series
+    """
+
+    np.random.seed(42)
+    os.makedirs("../models", exist_ok=True)
+
+    for name, model in models.items():
+        model.fit(X, y)
+
+        # Save model to a file
+        path = "../models/" + name + ".joblib"
+        joblib.dump(model, path)
